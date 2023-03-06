@@ -1,0 +1,197 @@
+.App {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.text-dark h3,
+.text-dark p {
+  text-decoration: none;
+}
+
+.main-dashboard {
+  margin-bottom: 20%;
+}
+
+.dashboard-body {
+  margin: 5%;
+}
+
+.header-party {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 3%;
+}
+
+.PartyPage {
+  height: 100vh;
+  align-items: center;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  height: 10%;
+}
+
+.your-profile {
+ padding-left: 16px;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 100%;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.image-single-party {
+  width: 100%;
+  height: 300px;
+  display: flex;
+}
+
+.button-list-party {
+  margin-left: 0px;
+  padding-left: 60px;
+  padding-right: 60px;
+  width: 220px;
+  height: 54px;
+}
+
+
+.h-10 {
+  height: 20rem;
+  width: 20rem;
+}
+
+.Header {
+  display: flex;
+  width: 100%;
+  height: 10%;
+}
+
+.Footer {
+  width: 100%;
+  height: 10%;
+  justify-content: center;
+}
+
+.HomePage {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.party-par {
+  text-align: left;
+  max-width: 15ch;
+}
+
+.about-us {
+  margin-top: 1%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.mt-3 {
+  margin-top: 3%;
+  margin-left: 0;
+}
+
+.login-page {
+  margin-top: 3%;
+  
+}
+
+.edit-profile-button {
+  width: 200px;
+}
+
+.profile-picture {
+  display: flex;
+  width: 200px;
+  height: 200px;
+ }
+
+.login-button {
+  color: white !important;
+}
+
+
+@media (max-width: 768px) {
+  /* Styles for screens with a maximum width of 768px (most mobile devices) */
+  .App {
+    height: 100vh;
+  }
+  
+  .main-dashboard {
+    margin-bottom: 10%;
+  }
+  
+  .dashboard-body {
+    margin: 3%;
+  }
+  
+  .header-party {
+    margin-top: 1%;
+  }
+  
+  .PartyPage {
+    height: auto;
+  }
+  
+  .top-bar {
+    width: 30%;
+    height: 30%;
+  }
+
+  .navbar-nav {
+    padding-left: 24px;
+  }
+
+  .menu-icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+    background-color: #fff;
+    transition: transform 0.2s ease-out;
+  }
+
+  .navbar-toggler {
+    margin-right: 20px;
+  }
+  
+  .navbar-toggler.is-active .menu-icon-bar:first-child {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .navbar-toggler.is-active .menu-icon-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar-toggler.is-active .menu-icon-bar:last-child {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
