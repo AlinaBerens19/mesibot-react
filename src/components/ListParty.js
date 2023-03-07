@@ -19,9 +19,9 @@ const ListParty = ({ party }) => {
               rounded
             />
           </div>
-            <h3>{ party.name }</h3>
-            <p className='text-truncate party-par'>{ party.description }</p>
-            <Link to={`/parties/${party.id}`} className="btn btn-info btn-lg btn-block btn-gradient-blue-purple">Let's party!</Link>
+            <h5>{ party.name }</h5>
+            <p className='text-truncate party-par'>{ party.date }</p>
+            <Link to={`/parties/${party.id}`} className="btn btn-outline-success btn-lg btn-block">Let's party!</Link>
           </MDBCol>
         </MDBRow>
     </MDBCol>

@@ -7,7 +7,7 @@ export default DataContext;
 
 export const DataProvider = ({ children }) => {
 
-    const [parties, setParties] = useState(() => getParties());
+    const [parties, setParties] = useState([]);
     const [search, setSearch] = useState("");
     const [filteredParties, setFilteredParties] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true)
@@ -17,7 +17,19 @@ export const DataProvider = ({ children }) => {
             getParties()
         }
     }, [isLoading, parties])
+
+
+    useEffect(() => {
+         searchParties(search)
+    }, [search, parties]);
     
+
+    const searchParties = (search) => {
+        const filteredResults = parties.filter(party => party.name.toLowerCase().includes(search.toLowerCase()) || party.location.toLowerCase().includes(search.toLowerCase()) || party.description.toLowerCase().includes(search.toLowerCase()));
+
+        setFilteredParties(filteredResults);
+    }
+
       
     const getParties = async () => {
     try {
@@ -30,10 +42,10 @@ export const DataProvider = ({ children }) => {
         console.log(error.message)
     }
     }
-
+    
 
     return (
-            <DataContext.Provider value={{ parties, setParties, search, setSearch, filteredParties, setFilteredParties }}>
+            <DataContext.Provider value={{ parties, setParties, search, setSearch, filteredParties, setFilteredParties, isLoading }}>
                 {children}
             </DataContext.Provider>
             )

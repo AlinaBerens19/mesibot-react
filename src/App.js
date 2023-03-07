@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
 import PartyPage from './pages/PartyPage';
 import CreateParty from './pages/CreateParty';
-import { useState } from 'react';
 import AboutUs from './pages/AboutUs';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './utils/PrivateRoute';
@@ -15,35 +14,35 @@ import { AuthProvider } from './context/AuthContext';
 import Missing from './pages/Missing';
 import Orders from './pages/Orders';
 import PaymentMethods from './pages/PaymentMethods';
+import { DataProvider } from './context/DataContext';
+import Unauthorized from './pages/Unauthorized';
+import ManagerDashboard from './pages/ManagerDashboard';
+import RegisterPage from './pages/RegisterPage';
 
 
 function App() {
 
-  const [parties, setParties] = useState([])
-  
-  
+
   return (
     <div className="App">
       <AuthProvider>
+        <DataProvider>
         <Header />
             <Routes>
-              <Route exact path="/" element={<HomePage
-                parties={parties}
-                setParties={setParties}
-              />}></Route>
-              <Route path="/parties" element={<HomePage
-                parties={parties}
-                setParties={setParties}
-              />}></Route>
+              {/* Public Routes */}
+              <Route exact path="/" element={<HomePage />}></Route>
+              <Route path="/parties" element={<HomePage />}></Route>
               <Route path="/parties/:id" element={<PartyPage />}></Route>
-              {/* <Route path="/dashboard" element={<Dashboard />}></Route> */}
               <Route path="/about" element={<AboutUs />}></Route>
               <Route path="/login" element={<LoginPage />}></Route>
-              <Route path="*" element={<Missing />} />
+              <Route path="/unauthorized" element={<Unauthorized />}></Route>
+              <Route path="/register" element={<RegisterPage />}></Route>
+              
+              {/* Private Routes */}
               <Route
                   path="/parties/create"
                   element={
-                    <PrivateRoute>
+                    <PrivateRoute allowedRoles={2}>
                       <CreateParty />
                     </PrivateRoute>
                   }
@@ -67,13 +66,27 @@ function App() {
               <Route exact
                   path="/dashboard"
                   element={
-                    <PrivateRoute >
+                    <PrivateRoute allowedRoles={2}>
                       <Dashboard />
                     </PrivateRoute>
                   }
                 />
+
+                <Route exact
+                  path="/dashboard/manager"
+                  element={
+                    <PrivateRoute allowedRoles={1}>
+                      <ManagerDashboard />
+                    </PrivateRoute>
+                  }
+                />
+
+            {/* Missing Route */}
+            <Route path="*" element={<Missing />} /> 
+
             </Routes>
         <Footer />
+        </DataProvider>
       </AuthProvider>
     </div>
   );

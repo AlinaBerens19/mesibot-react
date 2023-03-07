@@ -1,8 +1,4 @@
 import { useEffect, useState } from 'react'
-import MDBContainer from 'react-bootstrap/Container'
-import MDBRow from 'react-bootstrap/Row'
-import MDBCol from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image'
 import { useParams } from 'react-router-dom'
 
 const PartyPage = () => {
@@ -69,30 +65,32 @@ const PartyPage = () => {
     
     return (
         <main>
-        <MDBContainer className="px-3 PartyPage">
-            <MDBCol>
-            <MDBRow className="gx-4 justify-content-center">
-
-                <MDBCol xs={12} md={6} lg={5}>
-                <MDBRow className='justify-content-start mt-5 button-party-detail'>
-                    <Image fluid="true" className="image-single-party" src={party.image} />
-                    <h3 className='header-party'>{party.name}</h3>
-                    <p><b>We are waiting for you: </b>{party.date} {party.time}</p>
-                    <p>{party.description}</p>
-                    <p><b>Location: </b>{party.location}</p>
-                    <button 
-                    className="btn btn-info btn-lg btn-block mt-3"
-                    >
+          <div className="container px-3 PartyPage">
+            <div className="row justify-content-center">
+    
+              <div className="col-12 col-md-6 col-lg-5">
+                <div className="row justify-content-start mt-5 button-party-detail">
+                  <img src={party.image} alt={party.name} className="image-single-party img-fluid" />
+                  <h3 className="header-party">{party.name}</h3>
+                  <p><b>We are waiting for you: </b>{party.date} {party.time}</p>
+                  <p>{party.description}</p>
+                  <p><b>Location: </b>{party.location}</p>
+                  <button className="btn btn-info btn-lg btn-block mt-3 mb-4">
                     Buy Ticket
-                    </button>
-                </MDBRow>
-                </MDBCol>
-
-            </MDBRow>
-            </MDBCol>
-        </MDBContainer>
+                  </button>
+                </div>
+              </div>
+    
+            </div>
+          </div>
         </main>
-    )
-}
-
-export default PartyPage
+      );
+    }
+    
+    export default PartyPage;
+    
+    
+    
+    
+    
+    

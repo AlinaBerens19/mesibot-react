@@ -1,9 +1,5 @@
 import React from 'react'
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import CustomForm from '../components/CustomForm';
-import { useState } from 'react';
-
 
 
 const CreateParty = () => {
@@ -15,17 +11,6 @@ const CreateParty = () => {
   const [partyLocation, setPartyLocation] = React.useState('')
   const [partyImage, setPartyImage] = React.useState(null)
 
-
-  let createParty = async (newParty) => {
-    await fetch("/api/parties/create/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newParty),
-    });
-    
-  }
 
   let handleSubmit = async (e) => {
     e.preventDefault();

@@ -18,6 +18,18 @@ main {
   text-decoration: none;
 }
 
+@media (min-width: 1350px) {
+  .search-input {
+    margin-left: 500px;
+    }
+  }
+
+@media (min-width: 1240px) {
+  .search-input {
+    margin-left: 400px;
+    }
+  }  
+
 .main-dashboard {
   margin-bottom: 20%;
 }
@@ -69,7 +81,7 @@ main {
 
 .image-single-party {
   width: 100%;
-  height: 300px;
+  height: 400px;
   display: flex;
 }
 
@@ -193,5 +205,16 @@ main {
   }
   .navbar-toggler.is-active .menu-icon-bar:last-child {
     transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .search-input {
+    margin-right: 20px;
+    margin-left: 0px;
+  }
+
+  .image-single-party {
+    width: 100%;
+    height: 300px;
+    display: flex;
   }
 }

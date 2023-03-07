@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
   
   const [loading, setLoading] = useState(true);
 
+
   const loginUser = async (e) => {
     e.preventDefault();
 
@@ -48,7 +49,18 @@ export const AuthProvider = ({ children }) => {
       setUser(jwt_decode(data.access));
       sessionStorage.setItem("authTokens", JSON.stringify(data));
       console.log("User ==> ", jwt_decode(data.access));
-      navigate(`/dashboard`);
+      if(user) {
+        if(user.role === 1){
+          navigate(`/dashboard/manager`);
+        }
+        else if(user.role === 2){
+          navigate(`/dashboard`);
+        }
+        else {
+          navigate(`/login`);
+        }
+      }
+      
     } else {
       alert("Please check your credentials ==> ", data.message);
     }
@@ -100,6 +112,24 @@ export const AuthProvider = ({ children }) => {
     }
   }, [authTokens?.refresh, logoutUser, loading]);
 
+  const registerNewUser = async (updatedUser) => {
+    try {
+      const formData  = new FormData();
+      formData.append('first_name', updatedUser.first_name)
+      formData.append('last_name', updatedUser.last_name)
+      formData.append('email', updatedUser.email)
+      formData.append('phone', updatedUser.phone)
+      formData.append('username', updatedUser.username)
+      formData.append('password', updatedUser.password)
+      formData.append('confirmPassword', updatedUser.confirmPassword)
+      formData.append('role', updatedUser.role)
+    }
+    catch (error) {
+      console.log('Error:', error);
+    }
+  };
+
+
 
   const updateUserInfo = async (updatedUser) => {
     try {
@@ -144,6 +174,7 @@ export const AuthProvider = ({ children }) => {
         loginUser: loginUser,
         authTokens:authTokens,
         updateUserInfo : updateUserInfo,
+        registerNewUser : registerNewUser,
     }
 
     useEffect(() => {

@@ -1,27 +1,13 @@
-import { useEffect } from 'react'
 import MDBContainer from 'react-bootstrap/Container'
 import MDBRow from 'react-bootstrap/Row'
 import MDBCol from 'react-bootstrap/Col'
 import ListParty from '../components/ListParty'
+import useData from '../hooks/useData'
 
 
-const HomePage = ({parties, setParties}) => {
+const HomePage = () => {
 
-  useEffect(() => {
-    getParties()
-  }, [])
-
-  
-  const getParties = async () => {
-    try {
-      let response = await fetch('/api/parties/')
-      let data = await response.json()
-      console.log('DATA ===> ', data)
-      setParties(data)
-    } catch (error) {
-      console.log(error.message)
-    }}
-
+  const { filteredParties } = useData();
 
 
   return (
@@ -30,7 +16,7 @@ const HomePage = ({parties, setParties}) => {
         <MDBCol className="mt-5">
           <MDBRow className="gx-4">
 
-          {parties.map((party, index) => (
+          {filteredParties.map((party, index) => (
             <ListParty 
               party={party}
               key={index}

@@ -1,12 +1,11 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import ImageUploading from 'react-images-uploading';
 
 const CustomForm = ({partyName, setPartyName, partyDate, setPartyDate, partyTime, setPartyTime, partyDescription, setPartyDescription, partyLocation, setPartyLocation, setPartyImage, handleSubmit}) => {
   return (
     <>
-    <Form onSubmit={handleSubmit}>
+    <h2 className='mt-3'>Create Your Party</h2>
+    <Form onSubmit={handleSubmit} className="my-3">
       <Form.Group className="mb-3">
         <Form.Label>Name:</Form.Label>
         <Form.Control
@@ -52,7 +51,7 @@ const CustomForm = ({partyName, setPartyName, partyDate, setPartyDate, partyTime
           />
       </Form.Group>
       <Form.Group className="mb-3">
-      <Form.Label>Description:</Form.Label>
+      <Form.Label>Location:</Form.Label>
         <Form.Control
             required
             type="text"
@@ -74,7 +73,9 @@ const CustomForm = ({partyName, setPartyName, partyDate, setPartyDate, partyTime
             }}
           />
       </Form.Group>
-      <Button type="submit mt-3 create-party-button">Submit form</Button>
+      <button type="button" className="btn btn-outline-dark mt-3" onClick={handleSubmit}>
+       Submit form
+      </button>
       </Form>
     </>
   )

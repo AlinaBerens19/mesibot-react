@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
-import AuthContext from '../context/AuthContext';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
+import useAuth from '../hooks/useAuth';
 
 
 const ProfileCard = ({editable}) => {
-  const { user, updateUserInfo } = useContext(AuthContext);
+  const { user, updateUserInfo } = useAuth();
   const [updatedUser, setUpdatedUser] = useState(user);
   const [editing, setEditing] = useState(editable);
 
